@@ -1,0 +1,7 @@
+{
+  "name": "tca-euchre-angular-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

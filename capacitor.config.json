@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tca-euchre-angular-ionic",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
