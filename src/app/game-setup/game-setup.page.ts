@@ -12,4 +12,8 @@ export class GameSetupPage implements OnInit {
   ngOnInit() {
   }
 
+  letsPlay = () => {
+    console.log("here");
+  };
+
 }

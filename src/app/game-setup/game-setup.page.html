@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>game-setup</ion-title>
+    <ion-title>Game Setup</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-button
+    (click)="letsPlay()"
+    [routerLink]="['/play']"
+  >
+    Play
+  </ion-button>
 </ion-content>
