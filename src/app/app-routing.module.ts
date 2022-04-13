@@ -12,11 +12,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'game-setup',
+    path: 'setup',
     loadChildren: () => import('./game-setup/game-setup.module').then( m => m.GameSetupPageModule)
   },
   {
-    path: 'play-game',
+    path: 'play',
     loadChildren: () => import('./play-game/play-game.module').then( m => m.PlayGamePageModule)
   },
 ];
