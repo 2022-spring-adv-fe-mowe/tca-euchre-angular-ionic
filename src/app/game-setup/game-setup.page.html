@@ -5,9 +5,19 @@
 </ion-header>
 
 <ion-content>
+
+  <h3>
+    Choose Players:
+  </h3>
+  <div
+  *ngFor="let p of availablePlayers"
+  >
+    {{ p.name }} ({{ p.checked.toString() }})
+  </div>
+
   <ion-button
     (click)="letsPlay()"
-    [routerLink]="['/play']"
+    
   >
     Play Euchre
   </ion-button>

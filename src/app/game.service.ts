@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
-interface Player {
+export interface Player {
   name: string;
   order: number;
 }
-
 
 interface GameResult {
   start: string;
@@ -13,19 +12,24 @@ interface GameResult {
   players: Player[];
 }
 
+interface CurrentGame {
+  start: string;
+  availablePlayers: Player[];
+};
+
 const game1: GameResult = {
   start: "2022-02-14T15:14:30"
   , end: "2022-02-14T15:20:00"
   , winner: "Me"
-  , players: [{ name: "Me", order: 1}, { name: "Taylor", order: 2}, {name: "Jack", order: 3}]
+  , players: [{ name: "Me", order: 1}, { name: "Gregory", order: 2}, {name: "Terry", order: 3}]
 };
 
 
 const game2: GameResult = {
   start: "2022-02-14T21:00:30"
   , end: "2022-02-14T21:30:30"
-  , winner: "Stephanie"
-  , players: [{ name: "Me", order: 1}, { name: "Stephanie", order: 2}, {name: "Jack", order: 3}]
+  , winner: "Laurie"
+  , players: [{ name: "Me", order: 1}, { name: "Laurie", order: 2}, {name: "Terry", order: 3}]
 };
 
 @Injectable({
@@ -47,6 +51,26 @@ export class GameService {
     ];
     
   };
+
+  getUniquePlayers = () => (
+    [... new Set(this.gameResults.flatMap(x => x.players.map(y => y.name)))]
+  );
+
+  currentGame: CurrentGame = {
+    start: ""
+    , availablePlayers: []
+  };
+
+  setCurrentGame = (g: CurrentGame) => {
+    this.currentGame = g;
+  };
+
+  calculateShortestGame = () => (
+    Math.min(
+        ...this.gameResults.map(x => Date.parse(x.end) - Date.parse(x.start))
+    )
+  );
+
 
   constructor() { }
 }

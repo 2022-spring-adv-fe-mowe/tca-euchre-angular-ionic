@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
 
 @Component({
@@ -6,8 +6,17 @@ import { GameService } from '../game.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   constructor(private gameSvc: GameService) {}
+
+  shortestGame = 0;
+
+  ngOnInit(): void {
+  }
+
+  ionViewDidEnter() {
+    this.shortestGame = this.gameSvc.calculateShortestGame() / 1000 / 60;
+  }
 
 }
