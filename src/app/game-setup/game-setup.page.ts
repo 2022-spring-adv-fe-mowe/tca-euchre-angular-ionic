@@ -30,20 +30,7 @@ export class GameSetupPage implements OnInit {
     // Setup the current game players and start timestamp:
     this.gameSvc.setCurrentGame({
       start: new Date().toISOString()
-      , availablePlayers: [
-        {
-          name: this.availablePlayers[0].name
-          , order: 1
-        }
-        , {
-          name: this.availablePlayers[1].name
-          , order: 2
-        }
-        , {
-          name: "Bradley"
-          , order: 3
-        }
-      ]
+      , availablePlayers: this.availablePlayers.filter(x => x.checked)
     });
     // Navigate to the play screen:
     this.router.navigateByUrl("/play");
@@ -51,4 +38,20 @@ export class GameSetupPage implements OnInit {
 
   availablePlayers: AvailablePlayerChoice[] = [];
 
+  newPlayerName = "";
+
+  addNewPlayer = () => {
+
+    // add a new player defaulted to checked:
+    this.availablePlayers = [
+      ...this.availablePlayers
+      , {
+        name: this.newPlayerName
+        , checked: true
+        , order: 0
+      }
+    ];
+    // clear the new player name:
+    this.newPlayerName = "";
+  };
 }

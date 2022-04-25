@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <p
+    *ngFor="let p of gameSvc.currentGame.availablePlayers"
+  >
+    {{ p.name }}
+  </p>
   <ion-button
     (click)="endGame()"
   >

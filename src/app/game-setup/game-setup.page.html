@@ -9,15 +9,32 @@
   <h3>
     Choose Players:
   </h3>
-  <div
-  *ngFor="let p of availablePlayers"
+  <ion-input
+    placeholder="Enter new player name"
+    [(ngModel)]="newPlayerName"
   >
-    {{ p.name }} ({{ p.checked.toString() }})
-  </div>
-
+    
+  </ion-input>
+  <ion-button
+    (click)="addNewPlayer()"
+  >
+    Add
+  </ion-button>
+  <ion-list>
+    <ion-item
+      *ngFor="let p of availablePlayers"
+    >
+      <ion-label>
+        {{ p.name }}
+      </ion-label>
+      <ion-checkbox 
+        [(ngModel)]="p.checked"
+      >
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
   <ion-button
     (click)="letsPlay()"
-    
   >
     Play Euchre
   </ion-button>
