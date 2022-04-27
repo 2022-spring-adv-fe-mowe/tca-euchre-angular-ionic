@@ -27,10 +27,12 @@ export class GameSetupPage implements OnInit {
   }
 
   letsPlay = () => {
+    const chosenPlayers = this.availablePlayers.filter(x => x.checked);
+    console.log(chosenPlayers.length); // work to validate number of players!!!
     // Setup the current game players and start timestamp:
     this.gameSvc.setCurrentGame({
       start: new Date().toISOString()
-      , availablePlayers: this.availablePlayers.filter(x => x.checked)
+      , availablePlayers: chosenPlayers
     });
     // Navigate to the play screen:
     this.router.navigateByUrl("/play");
