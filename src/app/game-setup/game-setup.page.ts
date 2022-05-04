@@ -28,7 +28,14 @@ export class GameSetupPage implements OnInit {
 
   letsPlay = () => {
     const chosenPlayers = this.availablePlayers.filter(x => x.checked);
+
+    if (chosenPlayers.length < 4 ) {
+        alert("You must choose at least 4 players");
+        return;
+    }
+
     console.log(chosenPlayers.length); // work to validate number of players!!!
+    
     // Setup the current game players and start timestamp:
     this.gameSvc.setCurrentGame({
       start: new Date().toISOString()
